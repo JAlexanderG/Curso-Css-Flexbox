@@ -1,0 +1,161 @@
+/*
+
+FLEXBOX -> Sistema de maquetación Unidimensional
+
+la alineación por defecto de flex es en fila
+los estilos los aplica en bloques, si hay otra caja con el mismo nombre en la clase la coloca debajo de la otra*/
+
+/* 
+
+FLEX CONTAINER
+
+1. display -> define que una caja será flexbox de bloque o de línea
+2. flex-direction -> define el eje principal (main axis) row-x, column-y
+3. flex-wrap -> define si la caja flexbox envuelve o NO a sus hijos
+    flex-flow (shortHand de los últimos 2)
+4. justify-content -> alinea los hijos en el eje principal
+5. align-items -> alinea los hijos en el eje transversal, trabaja sobre cada una de las líneas
+6. align-content -> alinea los hijos en el eje transversal, trabaja en conjunto 
+
+*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.container {
+  background-color: #333;
+  height: 30vh;
+
+  display: flex; /*toma los estilos en bloque*/
+  display: inline-flex; /*empiezana tomar forma como de un elemento en línea*/
+  display: flex;
+
+  flex-direction: row; /*valor por defecto*/
+  flex-direction: row-reverse; /*agrega los valores al reves, pero también los pone al otro lado, si es left lo coloca en right*/
+  flex-direction: column;
+  flex-direction: column-reverse; /*aparte de cambiar el orden pasan de estar arriba a abajo*/
+  flex-direction: row;
+
+  /*wrap -> envoltura, envolver*/
+  flex-wrap: nowrap; /*default*/
+  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
+
+  /*flex-flow -> shortHand para flex-direction y flex-wrap*/
+  flex-flow: column wrap;
+  flex-flow: row wrap;
+
+  /*justify-content -> define la alineación de los elementos hijos, respecto al eje principal(main axis)*/
+  justify-content: flex-start; /*valor por defecto, similar a float left*/
+  justify-content: center; /*para el centro*/
+  justify-content: flex-end; /*similar a float right*/
+  justify-content: space-between;
+  justify-content: space-around;
+  justify-content: space-evenly;
+
+  /*para alinear en el eje transversal, en el eje sobrante*/
+  /*align-items y align-content*/
+
+  /*para probar se toma los valores por defecto, por temas de ejemplos*/
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  /*el contenido se va a estirar al tamaño del contenedor padre, si estos no tiene un tamaño definido*/
+  align-items: flex-end; /*se posiciona abajo y ocupa solo su contenido*/
+  align-items: flex-start; /*se posiciona arriba y ocupa solo su contenido*/
+  align-items: center; /*se posiciona abajo y ocupa solo su contenido*/
+  align-items: stretch; /*valor por defecto*/
+
+  /* Define la alineacion de los hijos en el eje transversal (cross axis), NO funciona cuando los hijos están en una sóla línea, es decir cuando flex-flow = nowrap */
+  align-content: flex-end;
+  align-content: center;
+  align-content: space-between;
+  align-content: space-around;
+  align-content: flex-start; /*default*/
+  align-content: space-evenly;
+  align-content: stretch;
+
+  /*Controla el espacio entre los elementos flexibles, pero no se aplica en los espacios de los bordes exteriores*/
+  /* row-gap: 10px;
+  column-gap: 20px;
+  gap: 10px; Para x y y
+  gap: 10px 30px; el primer valor es para x y el 2do para y */
+}
+
+.item {
+  background-color: cyan;
+  border: medium solid #999;
+  /* width: 20%; */
+  /* height: 20%; */
+}
+
+/*FLEX ITEM*/
+/*
+1. flex-grow -> cuando la caja flexbox tenga espacio sobrante, es la habilidad o el 
+    factor de crecer, valor por defecto es 0, NO se aceptan valores negativos
+2. flex-shrink -> cuando la caja flexbox NO tenga espacio sobrante, es la habilidad o   
+    el factor de encogerse, valor por defecto 1, no valores negativos
+3. flex-basis -> el tamaño del elemento hijo dentro de la línea de caja flexbox
+    si la caja flexbox tiene dirección de fila, flex-basis representa el width
+    si la caja flexbox tiene dirección de columna, flex-basis representa el height
+    valor por defecto auto.
+4. order -> Representa ele oden que tendrán los elementos hijos en la caja flexbox
+    valor por defecto 0, positivos y negativos, valor menor antes que uno mayor
+5. align-self -> sobreescribe el vaor de la propiedad align-items solo para el elemento hijo específicado
+*/
+
+.container-2 {
+  background-color: #333;
+  height: 30vh;
+  width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+}
+
+.item-2 {
+  background-color: yellowgreen;
+  border: medium solid #999;
+  /* width: 100px; */
+  /* height: 20%; */
+
+  flex-grow: 1; /*se divide el espacio restante y se le suma a todos los items*/
+  flex-grow: 0; /*defecto*/
+
+  flex-shrink: 1; /*defecto*/
+
+  flex-basis: 100px;
+  flex-basis: auto; /*defecto*/
+
+  /*flex -> shorHand [flex-grow][flex-shrink][flex-basis]*/
+  flex: 1 0 150px;
+  flex: 1 0 auto;
+  flex: 0 1 auto;
+
+  order: 0;
+
+  align-self: stretch; /*defecto*/
+}
+
+.item-2:nth-child(2) {
+  /* flex-grow: 1;
+  flex-shrink: 1; */
+  order: -1;
+}
+.item-2:nth-child(3) {
+  /* flex-grow: 0; */
+  align-self: flex-start;
+  align-self: flex-end;
+  align-self: center;
+}
