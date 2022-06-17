@@ -15,7 +15,7 @@ FLEX CONTAINER
     flex-flow (shortHand de los últimos 2)
 4. justify-content -> alinea los hijos en el eje principal
 5. align-items -> alinea los hijos en el eje transversal, trabaja sobre cada una de las líneas
-6. align-content -> alinea los hijos en el eje transversal, trabaja en conjunto 
+6. align-content -> alinea los hijos en el eje transversal, trabaja en conjunto. Solo va a funcionar cuando los elementos desborden el tamaño del elemento padre, y flex-wrap debe ser wrap.
 
 */
 
@@ -105,7 +105,7 @@ html {
     si la caja flexbox tiene dirección de fila, flex-basis representa el width
     si la caja flexbox tiene dirección de columna, flex-basis representa el height
     valor por defecto auto.
-4. order -> Representa ele oden que tendrán los elementos hijos en la caja flexbox
+4. order -> Representa el orden que tendrán los elementos hijos en la caja flexbox
     valor por defecto 0, positivos y negativos, valor menor antes que uno mayor
 5. align-self -> sobreescribe el vaor de la propiedad align-items solo para el elemento hijo específicado
 */
