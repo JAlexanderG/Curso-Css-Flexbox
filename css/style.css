@@ -72,7 +72,8 @@ html {
   align-items: center; /*se posiciona abajo y ocupa solo su contenido*/
   align-items: stretch; /*valor por defecto*/
 
-  /* Define la alineacion de los hijos en el eje transversal (cross axis), NO funciona cuando los hijos están en una sóla línea, es decir cuando flex-flow = nowrap */
+  /* Define la alineacion de los hijos en el eje transversal (cross axis), solo funciona cuando los elementos en una línea se desbordan y cuando flex-wrap sea:
+  flex-grap: wrap; */
   align-content: flex-end;
   align-content: center;
   align-content: space-between;
@@ -107,7 +108,7 @@ html {
     valor por defecto auto.
 4. order -> Representa el orden que tendrán los elementos hijos en la caja flexbox
     valor por defecto 0, positivos y negativos, valor menor antes que uno mayor
-5. align-self -> sobreescribe el vaor de la propiedad align-items solo para el elemento hijo específicado
+5. align-self -> sobreescribe el valor de la propiedad align-items solo para el elemento hijo específicado
 */
 
 .container-2 {
